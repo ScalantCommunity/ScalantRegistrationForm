@@ -1,9 +1,9 @@
-import React, { createContext } from 'react'
+import React, { createContext, useState } from 'react'
 
 const FormContext = createContext()
 
 const ContextProvider = ({children}) => {
-  const [formData, setFormData] = React.useState({
+  const [formData, setFormData] = useState({
     name: '',
     email: '',
     phoneNumber:'',

@@ -1,5 +1,5 @@
 import axios from 'axios';
-import React from 'react'
+import React, { useContext, useState } from 'react'
 import { Link } from 'react-router-dom'
 import Loading from '../../assets/Loading';
 import { FormContext } from '../../Context/Context'
@@ -7,11 +7,11 @@ import EmailVerifyOtp from './EmailVerifyOtp';
 import { toast } from 'react-hot-toast';
 
 const EnterEmail = () => {
-  const { formData, setFormData } = React.useContext(FormContext)
-  const [showPopup, setShowPopup] = React.useState(false)
-  const [otp, setOtp] = React.useState('')
-  const [verified, setVerified] = React.useState(false)
-  const [loading, setLoading] = React.useState(false)
+  const { formData, setFormData } = useContext(FormContext)
+  const [showPopup, setShowPopup] = useState(false)
+  const [otp, setOtp] = useState('')
+  const [verified, setVerified] = useState(false)
+  const [loading, setLoading] = useState(false)
 
   const handleVerify = async ()=>{
     console.log(formData.email)

@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { FormContext } from '../../Context/Context'
 import 'react-phone-number-input/style.css'
@@ -6,10 +6,10 @@ import PhoneInput from 'react-phone-number-input'
 
 
 const EnterPhoneNumber = () => {
-  const { formData, setFormData } = React.useContext(FormContext)
-  const [value, setValue] = React.useState(formData.phoneNumber)
+  const { formData, setFormData } = useContext(FormContext)
+  const [value, setValue] = useState(formData.phoneNumber)
 
-  React.useEffect(()=>{
+  useEffect(()=>{
     setFormData({...formData, phoneNumber:value})
   },[value])
   return (

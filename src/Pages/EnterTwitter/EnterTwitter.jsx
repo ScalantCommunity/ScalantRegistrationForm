@@ -1,9 +1,9 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import { Link } from 'react-router-dom'
 import { FormContext } from '../../Context/Context'
 
 const EnterTwitter = () => {
-  const { formData, setFormData } = React.useContext(FormContext)
+  const { formData, setFormData } = useContext(FormContext)
   return (
     <div className='bg-sblack text-white flex-col h-[100vh] w-[100vw] flex items-center justify-center'>
       <p className='font-pop text-[46px] text-center font-medium'>Enter your Twitter URL</p>
