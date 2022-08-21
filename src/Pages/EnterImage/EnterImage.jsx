@@ -109,7 +109,7 @@ const EnterImage = () => {
 
   return  (
       <div className='bg-sblack text-white flex-col h-[100vh] w-[100vw] flex items-center justify-center'>
-      <p className='font-pop text-[46px] text-center font-medium'>Select Your Profile Image</p>
+      <p className='font-pop text-[30px] md:text-[46px] text-center font-medium'>Select Your Profile Image</p>
             <div class="flex justify-center items-center w-[80%] mt-[3rem]">
               <label for="dropzone-file" class="flex flex-col justify-center items-center w-[13rem] text-center h-[10rem] bg-gray-50 rounded-lg border-2 border-gray-300 border-dashed cursor-pointer dark:hover:bg-bray-800 dark:bg-gray-700 hover:bg-gray-100 dark:border-gray-600 dark:hover:border-gray-500 dark:hover:bg-gray-600">
                   <div class="flex flex-col justify-center items-center pt-5 pb-6">

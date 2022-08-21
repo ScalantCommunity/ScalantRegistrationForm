@@ -46,8 +46,8 @@ const EnterEmail = () => {
   return (
     <div className='bg-sblack relative text-white flex-col h-[100vh] w-[100vw] flex items-center justify-center'>
      {showPopup && <EmailVerifyOtp verifyOtp={verifyOtp} otp={otp} setOtp={setOtp}/>}
-      <p className='font-pop text-[46px] text-center font-medium'>Enter your Email</p>
-        <input readOnly={verified} value={formData.email} onChange={(e)=> setFormData({...formData, email:e.target.value})} type='email' className='text-[24px] py-[1rem] my-[1rem] border-white border-b focus:outline-0 w-[40vw] bg-sblack text-white' placeholder='Email' />
+      <p className='font-pop md:text-[46px] text-[30px] text-center font-medium'>Enter your Email</p>
+        <input readOnly={verified} value={formData.email} onChange={(e)=> setFormData({...formData, email:e.target.value})} type='email' className='text-[24px] py-[1rem] my-[1rem] border-white border-b text-center focus:outline-0 md:w-[40vw] w-[20rem] bg-sblack text-white' placeholder='Email' />
         {!verified && <button disabled={loading} onClick={handleVerify} className='flex items-center justify-center h-[3rem] my-[1.5rem] w-[12rem] text-sblack font-pop bg-white'>
           {loading?<Loading/>: 'Send OTP to Verify'}
           </button>}

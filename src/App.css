@@ -5,10 +5,19 @@
   margin-left: 1rem;
   border-bottom: 1px solid #fff;
   padding: 1rem 0;
-  width: 40vw;
+  width: 15rem;
   margin-bottom: 1rem;
 }
 
+@media (min-width: 768px) {
+  .PhoneInputInput {
+    width: 40vw;
+  }
+ }
+
+.PhoneInputInput:focus{
+  outline: none;
+}
 .PhoneInputCountrySelect{
   background-color: #1F2229 !important;
   font-family: 'Poppins';
