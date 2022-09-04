@@ -50,8 +50,8 @@ const EnterImage = () => {
 
   const uploadfileHandler = async (e)=>{
     
-    const formData = new FormData()
-    formData.append('image', imgFile)
+    const formDataa = new FormData()
+    formDataa.append('image', imgFile)
     
     try{
       const config = {
@@ -59,7 +59,7 @@ const EnterImage = () => {
           'Content-type': 'multipart/form-data'
         }
       }
-      const {data} = await axios.post('https://apiscalant.live/api/imgupload', formData, config)
+      const {data} = await axios.post('https://apiscalant.live/api/imgupload', formDataa, config)
 
       setImage(data)
       toast.success('Image Uploaded Successfully')
