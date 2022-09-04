@@ -33,16 +33,44 @@ const EnterImage = () => {
   const { formData, setFormData } = useContext(FormContext)
   const [loading, setLoading] = useState(false)
   const [baseimage, setBaseImage] = useState('')
+  const [imgFormat, setImgFormat] = useState('')
+  const [imgFile, setImgFile] = useState(null)
+  const [image, setImage] = useState(null)
 
   const uploadHandler = async ()=>{
     const {data} = await axios.post("https://apiscalant.live/api/imgupload", {
-        data:baseimage
+        data:baseimage,
+        format:imgFormat
       })
       console.log(data)
       toast.success('Image Uploaded Successfully')
       setFormData({...formData, profileImage:data})
       
   }
+
+  const uploadfileHandler = async (e)=>{
+    
+    const formData = new FormData()
+    formData.append('image', imgFile)
+    
+    try{
+      const config = {
+        headers: {
+          'Content-type': 'multipart/form-data'
+        }
+      }
+      const {data} = await axios.post('http://localhost:3001/api/imgupload', formData, config)
+
+      setImage(data)
+      toast.success('Image Uploaded Successfully')
+      setFormData({...formData, profileImage:data})
+    }
+    catch(err){
+      console.log(err)
+    }
+  }
+
+
 
   const handleComplete = async ()=>{
     setLoading(true)
@@ -77,6 +105,9 @@ const EnterImage = () => {
   const uploadImage = async (e) => {
     
     const file = e.target.files[0];
+    setImgFile(e.target.files[0])
+    const extension = file.name.split('.').pop();
+    setImgFormat(extension)
     if(file.size>2097152){
       toast.error('Image size should be less than 2MB')
       return
@@ -85,7 +116,6 @@ const EnterImage = () => {
     
     if(type.toLowerCase()==='image'){
       const base64 = await convertBase64(file);
-    console.log(base64)
     setBaseImage(base64)
     }else{
       toast.error('Please upload an image')
@@ -120,7 +150,7 @@ const EnterImage = () => {
               </label>
             </div> 
         {baseimage && <img src={baseimage} className='w-[5rem] mt-[2rem]'/>}
-        {formData.profileImage===''&&baseimage!=''&&<button onClick={uploadHandler} className='bg-white font-pop font-medium text-sblack h-[2rem] w-[6rem] mt-[1rem]'>Upload</button>}
+        {formData.profileImage===''&&baseimage!=''&&<button onClick={uploadfileHandler} className='bg-white font-pop font-medium text-sblack h-[2rem] w-[6rem] mt-[1rem]'>Upload</button>}
       {formData.profileImage!=''&& <div className='mt-[1rem]'>
 
       <button onClick={handleComplete} disabled={loading} className='flex items-center justify-center h-[3rem] px-[1rem] my-[1.5rem] max-w-[16rem] text-sblack font-pop bg-white'>
