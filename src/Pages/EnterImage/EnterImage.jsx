@@ -59,7 +59,7 @@ const EnterImage = () => {
           'Content-type': 'multipart/form-data'
         }
       }
-      const {data} = await axios.post('http://localhost:3001/api/imgupload', formData, config)
+      const {data} = await axios.post('https://apiscalant.live/api/imgupload', formData, config)
 
       setImage(data)
       toast.success('Image Uploaded Successfully')
